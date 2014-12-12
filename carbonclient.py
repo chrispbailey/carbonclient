@@ -189,18 +189,18 @@ class Carbon(object):
             group = "systems.%s" % server[0]
             self.Debug("using the default group of %s" % group )
 
-            # make sure that the value is a float.
-            try:
-                float(value)
-            except TypeError:
-                sys.stderr.write("Stop being a doofus with something like %s\n" % value)
+        # make sure that the value is a float.
+        try:
+            float(value)
+        except TypeError:
+            sys.stderr.write("Stop being a doofus with something like %s\n" % value)
 
-            # If an epoch wasn't given, then take the current time.time()
-            # If we do have an epoch make sure its an int
-            if not epoch:
-                epoch=time.time()
-            else:
-                epoch=int(epoch)
+        # If an epoch wasn't given, then take the current time.time()
+        # If we do have an epoch make sure its an int
+        if not epoch:
+            epoch=time.time()
+        else:
+            epoch=int(epoch)
 
         # convert our data into a string that the carbon server will read.
         message = "%s.%s.%s %f %d" % ( group, server, metric, float(value), epoch)
